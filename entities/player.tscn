@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://kaja8ixu32ji"]
+[gd_scene load_steps=19 format=3 uid="uid://kaja8ixu32ji"]
 
 [ext_resource type="Script" uid="uid://c22uyf8axv2oq" path="res://scripts/player.gd" id="1_merdl"]
 [ext_resource type="Texture2D" uid="uid://bs0w0rw6kaf1u" path="res://sprites/1 - Penguin/Idle (16 x 16).png" id="2_b0kkn"]
 [ext_resource type="Texture2D" uid="uid://mu0mtjj45ue" path="res://sprites/1 - Penguin/Waddling (16 x 16).png" id="3_e4p34"]
+[ext_resource type="Texture2D" uid="uid://dmevpmam52dxm" path="res://sprites/1 - Penguin/Jump (16 x 16).png" id="3_rfe5m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0kkn"]
 radius = 6.0
@@ -27,6 +28,10 @@ region = Rect2(48, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nm46"]
 atlas = ExtResource("2_b0kkn")
 region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0i8f"]
+atlas = ExtResource("3_rfe5m")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i623q"]
 atlas = ExtResource("3_e4p34")
@@ -76,6 +81,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_q0i8f")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_i623q")
 }, {
 "duration": 1.0,
@@ -107,5 +120,4 @@ shape = SubResource("CapsuleShape2D_b0kkn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i623q")
-animation = &"walk"
-frame_progress = 0.68294173
+animation = &"jump"
