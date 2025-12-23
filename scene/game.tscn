@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm0g8dxaqwkqk"]
+
+[ext_resource type="PackedScene" uid="uid://kaja8ixu32ji" path="res://entities/player.tscn" id="1_5kiuu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kiuu"]
+size = Vector2(147, 9.25)
+
+[node name="Game" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(75.5, 94.375)
+shape = SubResource("RectangleShape2D_5kiuu")
+debug_color = Color(0.21923101, 0.6304027, 0.31429037, 0.41960785)
+
+[node name="Player" parent="." instance=ExtResource("1_5kiuu")]
+position = Vector2(1, 9)
