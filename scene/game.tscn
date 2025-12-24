@@ -1,18 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm0g8dxaqwkqk"]
+[gd_scene load_steps=6 format=3 uid="uid://cm0g8dxaqwkqk"]
 
 [ext_resource type="PackedScene" uid="uid://kaja8ixu32ji" path="res://entities/player.tscn" id="1_5kiuu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kiuu"]
-size = Vector2(147, 9.25)
+size = Vector2(117.5, 20.3125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbls1"]
+size = Vector2(44.4375, 20.3125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33cqm"]
+size = Vector2(42.875, 20.3125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwcet"]
+size = Vector2(42.875, 20.3125)
 
 [node name="Game" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(75.5, 94.375)
+position = Vector2(59, 192)
 shape = SubResource("RectangleShape2D_5kiuu")
 debug_color = Color(0.21923101, 0.6304027, 0.31429037, 0.41960785)
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(159, 182)
+shape = SubResource("RectangleShape2D_dbls1")
+debug_color = Color(0.21923101, 0.6304027, 0.31429037, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(223, 170)
+shape = SubResource("RectangleShape2D_33cqm")
+debug_color = Color(0.21923101, 0.6304027, 0.31429037, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(281, 148)
+shape = SubResource("RectangleShape2D_xwcet")
+debug_color = Color(0.21923101, 0.6304027, 0.31429037, 0.41960785)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(334, 124)
+shape = SubResource("RectangleShape2D_xwcet")
+debug_color = Color(0.21923101, 0.6304027, 0.31429037, 0.41960785)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(374, 97)
+shape = SubResource("RectangleShape2D_xwcet")
+debug_color = Color(0.21923101, 0.6304027, 0.31429037, 0.41960785)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(407, 70)
+shape = SubResource("RectangleShape2D_xwcet")
+debug_color = Color(0.21923101, 0.6304027, 0.31429037, 0.41960785)
+
 [node name="Player" parent="." instance=ExtResource("1_5kiuu")]
-position = Vector2(1, 9)
+position = Vector2(416, 35)
