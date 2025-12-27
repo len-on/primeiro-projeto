@@ -112,7 +112,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_merdl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
