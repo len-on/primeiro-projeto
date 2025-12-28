@@ -126,6 +126,5 @@ animation = &"jump"
 position = Vector2(108, 158)
 limit_left = 0
 limit_top = 0
-limit_right = 420
 limit_bottom = 200
 position_smoothing_enabled = true
