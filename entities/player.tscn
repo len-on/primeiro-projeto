@@ -111,7 +111,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 script = ExtResource("1_merdl")
 
@@ -121,9 +121,3 @@ shape = SubResource("CapsuleShape2D_b0kkn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i623q")
 animation = &"jump"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = -9999994
-limit_bottom = 206
-position_smoothing_enabled = true

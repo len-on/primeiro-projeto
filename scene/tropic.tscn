@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://d131fv63tob3h"]
+[gd_scene load_steps=11 format=4 uid="uid://d131fv63tob3h"]
 
+[ext_resource type="PackedScene" uid="uid://croen705klc73" path="res://entities/camera.tscn" id="1_34ia6"]
 [ext_resource type="PackedScene" uid="uid://kaja8ixu32ji" path="res://entities/player.tscn" id="1_bmxgx"]
 [ext_resource type="TileSet" uid="uid://sopn3wpv6nop" path="res://tiles/terrain.tres" id="2_ry6l7"]
 [ext_resource type="TileSet" uid="uid://m3ls2pqw3567" path="res://tiles/decoration.tres" id="3_ry6l7"]
@@ -24,6 +25,9 @@ animations = [{
 }]
 
 [node name="Tropic" type="Node2D"]
+
+[node name="Camera" parent="." instance=ExtResource("1_34ia6")]
+position = Vector2(121, 72)
 
 [node name="Player" parent="." instance=ExtResource("1_bmxgx")]
 
