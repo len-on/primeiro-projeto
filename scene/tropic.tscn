@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d131fv63tob3h"]
+[gd_scene load_steps=13 format=4 uid="uid://d131fv63tob3h"]
 
 [ext_resource type="PackedScene" uid="uid://croen705klc73" path="res://entities/camera.tscn" id="1_34ia6"]
 [ext_resource type="PackedScene" uid="uid://kaja8ixu32ji" path="res://entities/player.tscn" id="1_bmxgx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://biba1d332qvd6" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/3 - Background_clouds.png" id="6_pss51"]
 [ext_resource type="Texture2D" uid="uid://bhcjbhdqcoejx" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/1 - Waters_version_1.png" id="7_7xb8y"]
 [ext_resource type="Texture2D" uid="uid://cks1ne2ssd787" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/2 - Waters_version_2.png" id="8_34ia6"]
+[ext_resource type="PackedScene" uid="uid://bcxngadkttf53" path="res://entities/level_end.tscn" id="10_d18o5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d18o5"]
 animations = [{
@@ -23,6 +24,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8vtq"]
+size = Vector2(20, 67)
 
 [node name="Tropic" type="Node2D"]
 metadata/_edit_vertical_guides_ = [545.0]
@@ -100,3 +104,12 @@ position = Vector2(121, 72)
 limit_right = 544
 
 [node name="Player" parent="." instance=ExtResource("1_bmxgx")]
+
+[node name="LevelEnd" parent="." instance=ExtResource("10_d18o5")]
+position = Vector2(554, 167)
+
+[node name="CollisionShape2D" parent="LevelEnd" index="0"]
+position = Vector2(0, -17.5)
+shape = SubResource("RectangleShape2D_t8vtq")
+
+[editable path="LevelEnd"]
