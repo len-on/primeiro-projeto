@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=3 uid="uid://kaja8ixu32ji"]
+[gd_scene load_steps=18 format=3 uid="uid://kaja8ixu32ji"]
 
-[ext_resource type="Script" uid="uid://c22uyf8axv2oq" path="res://scripts/player.gd" id="1_merdl"]
 [ext_resource type="Texture2D" uid="uid://bs0w0rw6kaf1u" path="res://sprites/1 - Penguin/Idle (16 x 16).png" id="2_b0kkn"]
 [ext_resource type="Texture2D" uid="uid://mu0mtjj45ue" path="res://sprites/1 - Penguin/Waddling (16 x 16).png" id="3_e4p34"]
 [ext_resource type="Texture2D" uid="uid://dmevpmam52dxm" path="res://sprites/1 - Penguin/Jump (16 x 16).png" id="3_rfe5m"]
@@ -115,11 +114,11 @@ animations = [{
 z_index = 2
 collision_layer = 2
 collision_mask = 9
-script = ExtResource("1_merdl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_b0kkn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i623q")
-animation = &"jump"
+animation = &"idle"
+frame_progress = 0.7519699
