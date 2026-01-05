@@ -5,15 +5,17 @@ enum PlayerState {
 	walk,
 	jump,
 	fall,
-	duck
+	duck,
+	slide
 }
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 @export var max_speed = 180.0
-@export var acceleration = 100
-@export var deceleration = 100
+@export var acceleration = 400
+@export var deceleration = 400
+@export var slide_deceleration = 100
 const JUMP_VELOCITY = -300.0
 
 var jump_count = 0
@@ -21,14 +23,7 @@ var jump_count = 0
 var direction = 0
 var status: PlayerState
 
-func move(delta):
-	update_direction()
-	
-	if direction:
-		velocity.x = move_toward(velocity.x, direction * max_speed, acceleration * delta)
-	else:
-		velocity.x = move_toward(velocity.x, 0, deceleration * delta)
-	
+
 
 func _ready() -> void:
 	go_to_idle_state()
@@ -49,7 +44,9 @@ func _physics_process(delta: float) -> void:
 		PlayerState.fall:
 			fall_state(delta)
 		PlayerState.duck:
-			duck_state()
+			duck_state(delta)
+		PlayerState.slide:
+			slide_state(delta)
 		
 			
 			
@@ -77,14 +74,19 @@ func go_to_fall_state():
 func go_to_duck_state():
 	status = PlayerState.duck
 	anim.play("duck")
-	collision_shape.shape.radius = 5
-	collision_shape.shape.height = 11
-	collision_shape.position.y = 2.5
+	set_small_collide()
 	
 func exit_from_duck_state():
-	collision_shape.shape.radius = 6
-	collision_shape.shape.height = 15
-	collision_shape.position.y = 0.5
+	set_large_collider()
+	
+func go_to_slide_state():
+	status = PlayerState.slide
+	anim.play("slide")
+	set_small_collide()
+	
+	
+func exit_from_slide_state():
+	set_large_collider()
 	
 
 func idle_state(delta):
@@ -109,6 +111,10 @@ func walk_state(delta):
 		
 	if Input.is_action_just_pressed("ui_jump"):
 		go_to_jump_state()
+		return
+		
+	if Input.is_action_just_pressed("ui_down"):
+		go_to_slide_state()
 		return
 		
 	if !is_on_floor():
@@ -143,13 +149,34 @@ func fall_state(delta):
 			go_to_walk_state()
 		return
 
-func duck_state():
+func duck_state(_delta):
 	update_direction()
 	if Input.is_action_just_released("ui_down"):
 		exit_from_duck_state()
 		go_to_idle_state()
 		return
+		
+func slide_state(delta):
+	velocity.x = move_toward(velocity.x, 0, slide_deceleration * delta)
+	
+	if Input.is_action_just_released("ui_down"):
+		exit_from_slide_state()
+		go_to_walk_state()
+		return
+		
+	if velocity.x == 0:
+		exit_from_slide_state()
+		go_to_duck_state()
+		return
 
+func move(delta):
+	update_direction()
+	
+	if direction:
+		velocity.x = move_toward(velocity.x, direction * max_speed, acceleration * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, deceleration * delta)
+	
 		
 func update_direction():
 	direction = Input.get_axis("ui_left", "ui_right")
@@ -161,3 +188,13 @@ func update_direction():
 		
 func can_jump() -> bool:
 	return jump_count < max_jump_count 
+	
+func set_small_collide():
+	collision_shape.shape.radius = 5
+	collision_shape.shape.height = 11
+	collision_shape.position.y = 2.5
+	
+func set_large_collider():
+	collision_shape.shape.radius = 6
+	collision_shape.shape.height = 15
+	collision_shape.position.y = 0.5

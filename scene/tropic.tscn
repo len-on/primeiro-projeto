@@ -107,8 +107,6 @@ limit_right = 544
 [node name="Player" parent="." instance=ExtResource("1_bmxgx")]
 position = Vector2(14, 165)
 script = ExtResource("10_t8vtq")
-acceleration = 400
-deceleration = 400
 
 [node name="LevelEnd" parent="." instance=ExtResource("10_d18o5")]
 position = Vector2(554, 167)
