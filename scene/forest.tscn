@@ -194,10 +194,11 @@ limit_top = 0
 limit_right = 859
 
 [node name="Player" parent="." instance=ExtResource("1_e2knd")]
-position = Vector2(26, 127)
+position = Vector2(8, 180)
 
 [node name="LevelEnd" parent="." instance=ExtResource("13_kmspj")]
 position = Vector2(869, 183)
+next_level = "tropic"
 
 [node name="CollisionShape2D" parent="LevelEnd" index="0"]
 position = Vector2(0, -25)
