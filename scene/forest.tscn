@@ -120,15 +120,6 @@ tile_set = SubResource("TileSet_boiax")
 tile_map_data = PackedByteArray("AAA0AAoAAAAFAAEAAAAyAAoAAAAFAAEAAAA1AAoAAAAFAAEAAAAzAAoAAAAFAAEAAAA=")
 tile_set = ExtResource("4_64es3")
 
-[node name="Skeleton" parent="TileMaps" instance=ExtResource("5_ja8kk")]
-position = Vector2(172, 143)
-
-[node name="Skeleton2" parent="TileMaps" instance=ExtResource("5_ja8kk")]
-position = Vector2(267, 175)
-
-[node name="Skeleton3" parent="TileMaps" instance=ExtResource("5_ja8kk")]
-position = Vector2(343, 143)
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="6" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -213,5 +204,14 @@ next_level = "tropic"
 [node name="CollisionShape2D" parent="LevelEnd" index="0"]
 position = Vector2(0, -25)
 shape = SubResource("RectangleShape2D_ja8kk")
+
+[node name="Skeleton" parent="." instance=ExtResource("5_ja8kk")]
+position = Vector2(172, 143)
+
+[node name="Skeleton2" parent="." instance=ExtResource("5_ja8kk")]
+position = Vector2(267, 175)
+
+[node name="Skeleton3" parent="." instance=ExtResource("5_ja8kk")]
+position = Vector2(343, 143)
 
 [editable path="LevelEnd"]
