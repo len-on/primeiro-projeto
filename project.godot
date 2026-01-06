@@ -11,15 +11,16 @@ config_version=5
 [application]
 
 config/name="PrimeiroProjeto"
-run/main_scene="uid://d131fv63tob3h"
+run/main_scene="uid://dp74slhrx5a2s"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=288
+window/size/viewport_width=400
 window/size/viewport_height=208
-window/size/mode=1
+window/size/mode=2
+window/size/window_width_override=1200
 window/stretch/mode="canvas_items"
 
 [global_group]
