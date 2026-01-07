@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dp74slhrx5a2s"]
+[gd_scene load_steps=19 format=4 uid="uid://dp74slhrx5a2s"]
 
 [ext_resource type="PackedScene" uid="uid://kaja8ixu32ji" path="res://entities/player.tscn" id="1_e2knd"]
 [ext_resource type="PackedScene" uid="uid://croen705klc73" path="res://entities/camera.tscn" id="1_jo4av"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://djsrid4i0pa82" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/2 - Trees.png" id="7_gwku7"]
 [ext_resource type="Texture2D" uid="uid://bs5ddy5bqsroj" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/1 - Leaf_top.png" id="8_64es3"]
 [ext_resource type="PackedScene" uid="uid://bcxngadkttf53" path="res://entities/level_end.tscn" id="13_kmspj"]
-[ext_resource type="PackedScene" uid="uid://0ualwmc7fww4" path="res://entities/spinning_bone.tscn" id="15_boiax"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmspj"]
 texture = ExtResource("4_gwku7")
@@ -214,8 +213,5 @@ position = Vector2(267, 175)
 
 [node name="Skeleton3" parent="." instance=ExtResource("5_ja8kk")]
 position = Vector2(343, 143)
-
-[node name="SpinningBone" parent="." instance=ExtResource("15_boiax")]
-position = Vector2(132, 107)
 
 [editable path="LevelEnd"]
