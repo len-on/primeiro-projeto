@@ -8,6 +8,7 @@ enum PlayerState {
 	duck,
 	slide,
 	wall,
+	swimming,
 	hurt
 }
 
@@ -54,6 +55,8 @@ func _physics_process(delta: float) -> void:
 			slide_state(delta)
 		PlayerState.wall:
 			wall_state(delta)
+		PlayerState.swimming:
+			swimming_state(delta)
 		PlayerState.hurt:
 			hurt_state(delta)
 		
@@ -98,6 +101,7 @@ func exit_from_slide_state():
 	set_large_collider()
 	
 func go_to_wall_state():
+	
 	status = PlayerState.wall
 	anim.play("wall")
 	
@@ -105,6 +109,10 @@ func go_to_wall_state():
 	
 	jump_count = 0
 	
+func got_to_swimming_state():
+	status = PlayerState.swimming
+	anim.play("swimming")
+
 func go_to_hurt_state():
 	if status == PlayerState.hurt:
 		return
@@ -235,7 +243,8 @@ func wall_state(delta):
 		go_to_jump_state()
 		return
 	
-	
+func swimming_state(_delta):
+	pass
 		
 func hurt_state(delta):
 	apply_gravity(delta)
@@ -291,6 +300,8 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("LethalArea"):
 		go_to_hurt_state()
+	elif body.is_in_group("Water"):
+		got_to_swimming_state()
 			
 func hit_enemy(area: Area2D):
 	if velocity.y > 0:
