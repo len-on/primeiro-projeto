@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dp74slhrx5a2s"]
+[gd_scene load_steps=21 format=4 uid="uid://dp74slhrx5a2s"]
 
 [ext_resource type="PackedScene" uid="uid://kaja8ixu32ji" path="res://entities/player.tscn" id="1_e2knd"]
 [ext_resource type="PackedScene" uid="uid://croen705klc73" path="res://entities/camera.tscn" id="1_jo4av"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ba3xcmumr8vli" path="res://sprites/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="4_gwku7"]
 [ext_resource type="Texture2D" uid="uid://cvmg51u4thyi3" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/5 - Tree_row_BG_2.png" id="4_qxlj4"]
 [ext_resource type="Texture2D" uid="uid://npybq55h3vfc" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Terrain (16 x 16).png" id="5_64es3"]
-[ext_resource type="Texture2D" uid="uid://diohpu2ugrsa7" path="res://sprites/Seasonal Tilesets/5 - Misc. universal tiles/Lava_frames (16 x 32).png" id="5_boiax"]
+[ext_resource type="TileSet" uid="uid://cccoa4n30t3ik" path="res://tiles/lava.tres" id="5_boiax"]
 [ext_resource type="PackedScene" uid="uid://budvqvi4a5fn4" path="res://entities/skeleton.tscn" id="5_ja8kk"]
 [ext_resource type="Texture2D" uid="uid://dnw7ya23snhxn" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/4 - Tree_row_BG_1.png" id="5_jo4av"]
 [ext_resource type="Texture2D" uid="uid://23htnj2n2rt6" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/3 - Bottom_leaf_piles.png" id="6_jxvlp"]
@@ -100,28 +100,11 @@ texture = ExtResource("5_64es3")
 sources/0 = SubResource("TileSetAtlasSource_kmspj")
 sources/1 = SubResource("TileSetAtlasSource_ja8kk")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xhum"]
-texture = ExtResource("5_boiax")
-0:0/animation_frame_0/duration = 0.1
-0:0/animation_frame_1/duration = 0.1
-0:0/animation_frame_2/duration = 0.1
-0:0/animation_frame_3/duration = 0.1
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.0791512, 8, -0.8992939, 8, 8, -8, 8)
-0:1/animation_frame_0/duration = 0.1
-0:1/animation_frame_1/duration = 0.1
-0:1/animation_frame_2/duration = 0.1
-0:1/animation_frame_3/duration = 0.1
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSet" id="TileSet_p7yhu"]
-physics_layer_0/collision_layer = 16
-physics_layer_0/collision_mask = 2
-sources/0 = SubResource("TileSetAtlasSource_0xhum")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ja8kk"]
 size = Vector2(20, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boiax"]
+size = Vector2(11, 219)
 
 [node name="Forest" type="Node2D"]
 metadata/_edit_vertical_guides_ = [859.0, 400.0]
@@ -145,7 +128,7 @@ tile_set = ExtResource("4_64es3")
 [node name="Lava" type="TileMapLayer" parent="TileMaps" groups=["LethalArea"]]
 z_index = 2
 tile_map_data = PackedByteArray("AAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAANAAwAAAAAAAEAAAAOAAwAAAAAAAEAAAAPAAwAAAAAAAEAAAAQAAwAAAAAAAEAAAARAAwAAAAAAAEAAAASAAwAAAAAAAEAAAATAAwAAAAAAAEAAAAUAAwAAAAAAAEAAAA=")
-tile_set = SubResource("TileSet_p7yhu")
+tile_set = ExtResource("5_boiax")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -217,7 +200,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 576, 208)
 
 [node name="Camera" parent="." instance=ExtResource("1_jo4av")]
-position = Vector2(56, 84)
+position = Vector2(10, 180)
 limit_top = 0
 limit_right = 859
 
@@ -237,5 +220,12 @@ position = Vector2(172, 143)
 
 [node name="Skeleton3" parent="." instance=ExtResource("5_ja8kk")]
 position = Vector2(343, 143)
+
+[node name="Limit" type="StaticBody2D" parent="."]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limit"]
+position = Vector2(-4.5, 99.5)
+shape = SubResource("RectangleShape2D_boiax")
 
 [editable path="LevelEnd"]

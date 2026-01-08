@@ -146,7 +146,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fpmxe"]
@@ -161,10 +161,10 @@ collision_layer = 4
 script = ExtResource("1_yag7t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 0.1)
 sprite_frames = SubResource("SpriteFrames_yag7t")
-animation = &"attack"
-frame = 2
-frame_progress = 0.9318162
+animation = &"walk"
+frame_progress = 0.9816411
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
