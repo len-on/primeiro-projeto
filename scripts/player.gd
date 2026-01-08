@@ -13,6 +13,7 @@ enum PlayerState {
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var reload_timer: Timer = $ReloadTimer
+@onready var hitbox_collision_shape: CollisionShape2D = $Hitbox/CollisionShape2D
 
 @export var max_speed = 180.0
 @export var acceleration = 400
@@ -95,7 +96,7 @@ func exit_from_slide_state():
 func go_to_hurt_state():
 	status = PlayerState.hurt
 	anim.play("hurt")
-	velocity = Vector2.ZERO
+	velocity.x = 0
 	reload_timer.start()
 	
 
@@ -207,13 +208,25 @@ func set_small_collide():
 	collision_shape.shape.height = 11
 	collision_shape.position.y = 2.5
 	
+	hitbox_collision_shape.shape.size.y = 10
+	hitbox_collision_shape.position.y = 3
+	
 func set_large_collider():
 	collision_shape.shape.radius = 6
 	collision_shape.shape.height = 15
 	collision_shape.position.y = 0.5
+	
+	hitbox_collision_shape.shape.size.y = 15
+	hitbox_collision_shape.position.y = 0.5
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemies"):
+		hit_enemy(area)
+	elif area.is_in_group("LethalArea"):
+		hit_lethal_area()
+			
+func hit_enemy(area: Area2D):
 	if velocity.y > 0:
 		#inimigo morre
 		area.get_parent().take_damege()
@@ -222,6 +235,9 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		#player morre
 		if status != PlayerState.hurt:
 			go_to_hurt_state()
+	
+func hit_lethal_area():
+	go_to_hurt_state()
 
 
 func _on_reload_timer_timeout() -> void:
