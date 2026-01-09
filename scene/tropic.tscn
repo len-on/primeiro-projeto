@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://d131fv63tob3h"]
+[gd_scene load_steps=17 format=4 uid="uid://d131fv63tob3h"]
 
 [ext_resource type="PackedScene" uid="uid://croen705klc73" path="res://entities/camera.tscn" id="1_34ia6"]
 [ext_resource type="PackedScene" uid="uid://kaja8ixu32ji" path="res://entities/player.tscn" id="1_bmxgx"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://m3ls2pqw3567" path="res://tiles/decoration.tres" id="3_ry6l7"]
 [ext_resource type="TileSet" uid="uid://brvi7ihk5awqy" path="res://tiles/underwater.tres" id="3_ytc0w"]
 [ext_resource type="Texture2D" uid="uid://3502janhnxr2" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/5 - Sky_color.png" id="4_4big0"]
+[ext_resource type="PackedScene" uid="uid://0v2tjiqg4i5e" path="res://entities/moving_platform.tscn" id="4_xflqb"]
 [ext_resource type="Texture2D" uid="uid://244d6jy76i5x" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/4 - Floating_clouds.png" id="5_mf6tq"]
 [ext_resource type="Texture2D" uid="uid://biba1d332qvd6" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/3 - Background_clouds.png" id="6_pss51"]
 [ext_resource type="Texture2D" uid="uid://bhcjbhdqcoejx" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/1 - Waters_version_1.png" id="7_7xb8y"]
@@ -138,4 +139,19 @@ shape = SubResource("RectangleShape2D_t8vtq")
 [node name="Skeleton" parent="." instance=ExtResource("12_ei81g")]
 position = Vector2(274, 158)
 
+[node name="MovingPlatform" parent="." instance=ExtResource("4_xflqb")]
+position = Vector2(106, 144)
+
+[node name="Target" parent="MovingPlatform" index="1"]
+position = Vector2(0, -152)
+
+[node name="MovingPlatform2" parent="." instance=ExtResource("4_xflqb")]
+position = Vector2(161, -41)
+time_platform = 2
+
+[node name="Target" parent="MovingPlatform2" index="1"]
+position = Vector2(145, 0)
+
 [editable path="LevelEnd"]
+[editable path="MovingPlatform"]
+[editable path="MovingPlatform2"]

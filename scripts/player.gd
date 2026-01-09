@@ -27,6 +27,7 @@ enum PlayerState {
 @export var wall_jump_velocity = 240
 @export var water_max_speed = 100
 @export var water_acceleration = 200
+@export var water_jump_force = -100
 
 
 const JUMP_VELOCITY = -300.0
@@ -259,7 +260,7 @@ func swimming_state(delta):
 	velocity.y = min(velocity.y, water_max_speed)
 	
 	if Input.is_action_just_pressed("ui_jump"):
-		velocity.y = -100
+		velocity.y = water_jump_force
 		
 	#var vertical_direction = Input.get_axis("ui_jump", "ui_down")
 	#
