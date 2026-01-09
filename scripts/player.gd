@@ -255,12 +255,18 @@ func swimming_state(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, water_acceleration * delta)
 		
-	var vertical_direction = Input.get_axis("ui_jump", "ui_down")
+	velocity.y += water_acceleration * delta
+	velocity.y = min(velocity.y, water_max_speed)
 	
-	if vertical_direction:
-		velocity.y = move_toward(velocity.y, water_max_speed * vertical_direction, water_acceleration * delta)
-	else:
-		velocity.y	= move_toward(velocity.y, 0, water_acceleration * delta)
+	if Input.is_action_just_pressed("ui_jump"):
+		velocity.y = -100
+		
+	#var vertical_direction = Input.get_axis("ui_jump", "ui_down")
+	#
+	#if vertical_direction:
+		#velocity.y = move_toward(velocity.y, water_max_speed * vertical_direction, water_acceleration * delta)
+	#else:
+		#velocity.y	= move_toward(velocity.y, 0, water_acceleration * delta)
 func hurt_state(delta):
 	apply_gravity(delta)
 	pass
